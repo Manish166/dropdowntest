@@ -1,8 +1,6 @@
 import React from 'react'
-import data from './data'
-const DropdownList = () =>{
-    const countries = data.countries
-    const contList = countries.map((country)=>{
+const DropdownList = ({countries}) =>{
+    const countriesList = countries.map((country)=>{
         return(
             <li key={country.countryId}>
                 {country.countryName}
@@ -10,7 +8,7 @@ const DropdownList = () =>{
         )
     })
     return(
-        <ul>{contList}</ul>
+        <ul>{countriesList}</ul>
     )
 }
 
