@@ -9,7 +9,10 @@ const DropdownList = ({countries, onSelectCountry}) =>{
     })
     return(
         <div>
-            <ul style={{textAlign : 'start', listStyle : 'none', padding : '10px'}}>
+            <ul style={{textAlign : 'start', 
+                listStyle : 'none', 
+                paddingLeft : '10px',
+                paddingRight : '10px'}}>
                 {countriesList}
             </ul>
         </div>

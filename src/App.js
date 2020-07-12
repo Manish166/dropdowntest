@@ -13,8 +13,8 @@ const App=()=> {
   const [selectedCountry, setSelectedCountry] = useState('Select a location')
   const optionsLimit=7
   const moreToView = data.countries.length-optionsLimit
+  const country = {"countryId" : 0, "countryName" : ""}
   
-
   useEffect(()=>{
     console.log('useEffect')
     if (searchValue.length>2){
@@ -51,45 +51,53 @@ const App=()=> {
   }
 
   const addCountry=()=>{
-    let country = {"countryId" : 0, "countryName" : ""}
     country.countryId=data.countries.length +1
     country.countryName=searchValue[0].toUpperCase() + searchValue.slice(1)
     data.countries.push(country)
+    setSelectedCountry(country.countryName)
+    setDisplayDrop(false)
   }
 
-  const onSelectCountry = (selection)=>{
-    console.log("haha", selection.country.countryName)
-    setSelectedCountry(selection.country.countryName)
+  const onSelectCountry = ({country})=>{
+    setSelectedCountry(country.countryName)
     setDisplayDrop(false)
   }
   return (
+    <div>
     <div style={{
+        fontSize : '12px',
         width : '200px', 
         left : '40%', 
         top: '20%', 
         position: 'absolute', 
-        borderColor: 'black',
-        border : 'solid'}}>
-        <span style={{borderColor: 'black', borderBottom : 'solid'}}
-          onClick={toggle}>
-              <p style={{display : "inline"}}>{selectedCountry}</p>
-              <img style = {{height :  '20px', float : 'right'}}src={drop}/>
+        border : '1px solid black'}}>
+        <span style={{borderColor: 'black'}} onClick={toggle}>
+            <p style={{display : "inline"}}>
+              {selectedCountry}
+            </p>
+            <img style = {{height :  '20px', float : 'right'}}src={drop}/>
         </span>
       {displayDrop && 
-        <div>
+        <div style={{paddingTop : '10px'}}>
           <SearchBar value={searchValue} handleOnChange={handleOnChange}/>
           <DropdownList countries={countries} onSelectCountry={onSelectCountry}/>
           {displayViewMore && 
-            <p onClick={handleViewMoreClick}>{moreToView} more</p>
+            <p style={{float : 'right'}} onClick={handleViewMoreClick}>
+              {moreToView} more
+            </p>
           }
           {displayAddButton &&
-            <div> 
-              <button onClick={addCountry}>Add and Select</button>
-              <p>{searchValue} not found</p>
-            </div>
+            <span> 
+              <p style={{display : 'inline'}}>{searchValue} not found</p>
+              <button onClick={addCountry}
+                style={{borderWidth : '1px', background : 'transparent', float : 'right', borderRadius : '3px'}}>
+                Add and Select
+              </button>
+            </span>
           }
         </div>
       }
+    </div>
     </div>
   );
 }
