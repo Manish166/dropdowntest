@@ -1,14 +1,19 @@
 import React from 'react'
-const DropdownList = ({countries}) =>{
+const DropdownList = ({countries, onSelectCountry}) =>{
     const countriesList = countries.map((country)=>{
         return(
-            <li key={country.countryId}>
+            <li key={country.countryId} onClick={()=>onSelectCountry({country})}>
                 {country.countryName}
             </li>
         )
     })
     return(
-        <ul>{countriesList}</ul>
+        <div>
+            <ul style={{textAlign : 'start', listStyle : 'none', padding : '10px'}}>
+                {countriesList}
+            </ul>
+        </div>
+        
     )
 }
 
