@@ -1,9 +1,9 @@
 import React from 'react'
-const DropdownList = ({countries, onSelectCountry}) =>{
-    const countriesList = countries.map((country)=>{
+const DropdownList = ({listItems, onSelect}) =>{
+    const items = listItems.map((item)=>{
         return(
-            <li key={country.countryId} onClick={()=>onSelectCountry({country})}>
-                {country.countryName}
+            <li key={item.id} onClick={()=>onSelect({item})}>
+                {item.name}
             </li>
         )
     })
@@ -13,7 +13,7 @@ const DropdownList = ({countries, onSelectCountry}) =>{
                 listStyle : 'none', 
                 paddingLeft : '10px',
                 paddingRight : '10px'}}>
-                {countriesList}
+                {items}
             </ul>
         </div>
         

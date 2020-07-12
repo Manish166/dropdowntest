@@ -1,16 +1,20 @@
 const data= {
     "countries" : [
-        {"countryId": 1, "countryName":"Singapore"},
-        {"countryId": 2, "countryName":"Malaysia"},
-        {"countryId": 3, "countryName":"Indonesia"},
-        {"countryId": 4, "countryName":"S. Korea"},
-        {"countryId": 5, "countryName":"N. Korea"},
-        {"countryId": 6, "countryName":"Thailand"},
-        {"countryId": 7, "countryName":"Cambodia"},
-        {"countryId": 8, "countryName":"Vietnam"},
-        {"countryId": 9, "countryName":"India"},
-        {"countryId": 10, "countryName":"China"},
-        {"countryId": 11, "countryName":"Pakistan"},
+        {"id": 1, "name":"Singapore"},
+        {"id": 2, "name":"Malaysia"},
+        {"id": 3, "name":"Indonesia"},
+        {"id": 4, "name":"S. Korea"},
+        {"id": 5, "name":"N. Korea"},
+        {"id": 6, "name":"Thailand"},
+        {"id": 7, "name":"Cambodia"},
+        {"id": 8, "name":"Vietnam"},
+        {"id": 9, "name":"India"},
+        {"id": 10, "name":"China"},
+        {"id": 11, "name":"Pakistan"},
+    ],
+    "users" : [
+        {"id": 1, "role":"canAdd", "name" : "Admin"},
+        {"id": 2, "role":"canNotAdd", "name" : "Customer"},
     ]
 }
 
