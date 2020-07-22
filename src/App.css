@@ -1,3 +1,15 @@
 .App {
   text-align: center;
 }
+
+.DropDownContainer {
+  font-size : 12px;
+  width : 200px;
+  left : 40%;
+  top : 20%;
+  position: absolute;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+

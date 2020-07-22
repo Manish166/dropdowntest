@@ -3,6 +3,7 @@ import SearchBar from './SearchBar'
 import DropdownList from './DropdownList'
 import data from './data'
 import drop from './dropImage.png'
+import './App.css'
 
 const App=()=> {
   const [searchValue, setSearchValue] = useState('')
@@ -17,7 +18,6 @@ const App=()=> {
   const country = {"id" : 0, "name" : ""}
   
   useEffect(()=>{
-    console.log('useEffect')
     if (searchValue.length>2){
       const filteredCountries = data.countries.filter(country=>country.name.toLowerCase().includes(searchValue.toLowerCase()))
       if (filteredCountries.length==0){
@@ -52,11 +52,13 @@ const App=()=> {
   }
 
   const addCountry=()=>{
-    country.countryId=data.countries.length +1
-    country.countryName=searchValue[0].toUpperCase() + searchValue.slice(1)
+    country.id=data.countries.length +1
+    country.name=searchValue[0].toUpperCase() + searchValue.slice(1)
     data.countries.push(country)
-    setSelectedCountry(country.countryName)
+    console.log(data.countries)
+    setSelectedCountry(country.name)
     setDisplayDrop(false)
+    setSearchValue('')
   }
 
   const onSelect = ({item})=>{
@@ -66,24 +68,16 @@ const App=()=> {
   }
 
   return (
-    <div>
+    <div >
       <div>
         <button onClick={()=>setRole('admin')}>Admin(has add role)</button>
         <button onClick={()=>setRole('customer')}>Customer</button>
       </div>
-      <div style={{
-          fontSize : '12px',
-          width : '200px', 
-          left : '40%', 
-          top: '20%', 
-          position: 'absolute', 
-          border : '1px solid black'}}>
-          <span style={{borderColor: 'black'}} onClick={toggle}>
-              <p style={{display : "inline"}}>
-                {selectedCountry}
-              </p>
-              <img style = {{height :  '20px', float : 'right'}}src={drop}/>
-          </span>
+      <div className='DropDownContainer'>
+          <div onClick={toggle}>
+              <p style={{display : "inline"}}>{selectedCountry}</p>
+              <img style={{height : '20px', float : 'right'}}src={drop}/>
+          </div>
         {displayDrop && 
           <div style={{paddingTop : '10px'}}>
             <SearchBar value={searchValue} handleOnChange={handleOnChange}/>
@@ -102,7 +96,6 @@ const App=()=> {
                     Add and Select
                   </button>
                 }
-                
               </span>
             }
           </div>
